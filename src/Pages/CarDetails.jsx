@@ -1,7 +1,14 @@
 import React from 'react';
+import merce from '../assets/Images/merce.jpeg';
+import { useNavigate } from 'react-router-dom';
 import { Star, MapPin, Calendar, DollarSign, Info, User, MessageSquare } from 'lucide-react';
 
 const CarDetails = () => {
+  const Navigate = useNavigate();
+  const image = merce;
+  const handleclick = () => { 
+    Navigate('/Bookings');
+}
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -21,9 +28,9 @@ const CarDetails = () => {
           {/* Image Section */}
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img 
-              src="https://images.unsplash.com/photo-1593642532937-0b9b2d3a7d2a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" 
+              src={image}
               alt="car"
-              className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full h-[800px] object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
 
@@ -106,7 +113,7 @@ const CarDetails = () => {
             </div>
 
             {/* Book Now Button */}
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2">
+            <button onClick={handleclick} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2">
               <Calendar className="w-5 h-5" />
               Book Now
             </button>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Calendar, Car, CreditCard, MapPin, Package, User, Phone } from 'lucide-react';
 
 const BookingForm = () => {
+    const [estimate,setEstimate] = useState(0);
     const [formData, setFormData] = useState({
         name: '',
         number: '',
@@ -14,9 +15,36 @@ const BookingForm = () => {
         paymentMode: ''
     });
 
+    // const [message, setMessage] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setMessage('Successfully booked!');
+    };
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
+    const calculateEstimate = () => {
+        if(formData.carType === 'sedan'){
+            const restimate = Math.floor(Math.random() * 1000);
+            setEstimate(1000 + restimate)
+        }
+        if(formData.carType === 'suv'){
+            const restimate = Math.floor(Math.random() * 1000);
+            setEstimate(2000 + restimate)
+        }
+        if(formData.carType === 'hatchback'){
+            const restimate = Math.floor(Math.random() * 1000);
+            setEstimate(1500 + restimate)
+        }
+        if(formData.carType==='luxury'){
+            const restimate = Math.floor(Math.random() * 1000);
+            setEstimate(3500 + restimate)
+        }
+
+    }
+
 
     return (
         <div className="min-h-screen bg-blue-500 p-6">
@@ -72,6 +100,7 @@ const BookingForm = () => {
                             <option value="sedan">Sedan</option>
                             <option value="suv">SUV</option>
                             <option value="hatchback">Hatchback</option>
+                            <option value="luxury">LUX</option>
                         </select>
                     </div>
 
@@ -174,15 +203,21 @@ const BookingForm = () => {
 
                 <div className="mt-6 bg-white p-4 rounded-lg border border-blue-300">
                     <h2 className="text-lg font-medium text-blue-600">Estimated Price</h2>
-                    <p className="mt-2">...</p>
+                    <p className="mt-2">
+                        <span className="text-2xl font-semibold">₹ {estimate}</span> for the selected ride
+                        <span className='font-thin text-xs'> + Booking Price : 250</span>
+                    </p>
                 </div>
 
-                <button
+                <button onClick={calculateEstimate}
                     className="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200"
                 >
-                    Book Now
+                    Estimate
                 </button>
             </div>
+            {/* {message && ( <div className="mt-4 bg-green-100 border border-green-400 text-green-700 p-4 rounded-lg">
+                {message}
+                </div> )} */}
         </div>
     );
 };

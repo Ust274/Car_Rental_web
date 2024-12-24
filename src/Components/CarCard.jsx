@@ -1,12 +1,15 @@
 import React from 'react';
+import base from '../assets/Images/base.png';
 import { useNavigate} from 'react-router-dom';
+
 const CarCard = () => {
   const Navigate = useNavigate();
-  const imageUrl = 'src/assets/Images/pexels-mikebirdy-170811.jpg';
+  const imageUrl = base;
    const handleClick= () => 
     {
     Navigate('/CarDetails');
     };
+
 
 
   return (
@@ -17,12 +20,17 @@ const CarCard = () => {
             <img className='w-full' src={imageUrl} alt='Car' />
             <div className='px-6 py-4'>
                 <div className='font-bold text-xl mb-2'>Car Name</div>
-                <p className='text-gray-700 text-base'>Car Description</p>
+                <p className='text-sm text-gray-700'>
+                Comfortable & Spacious Interiors 
+                Fuel-Efficient & Reliable Performance
+                Modern Safety Features
+                GPS & Bluetooth Connectivity 
+                </p>
             </div>
             <div className='px-6 py-4'>
-                <span className='inline-block bg-black first-line:0 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2'>4.67⭐</span>
-                <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>#tag2</span>
-                <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700'>#tag3</span>
+                <span className='inline-block bg-black first-line:0 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2'>4.62⭐</span>
+                <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2'>Sedan</span>
+                <span className='inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white'>On-Road</span>
             </div>
             </div>
         </div>

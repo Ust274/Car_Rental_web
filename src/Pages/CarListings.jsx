@@ -35,7 +35,12 @@ const CarListings = () => {
             <div className="p-6 bg-gray-100 ">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 rounded">
                     {Array.from({ length: k }, (_, index) => (
-                        <CarCard key={index} />
+                        <CarCard
+                            key={index}
+                            image={`path/to/car/image${index}.jpg`}
+                            name={`Car Model ${index}`}
+                            price={`$${(index + 1) * 100}`}
+                        />
                     ))}
                 </div>
             </div>
