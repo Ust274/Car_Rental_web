@@ -4,11 +4,25 @@ import Bangalore from '../assets/Images/Bangalore.webp';
 import Chennai from '../assets/Images/Chennai.webp';
 import Kolkata from '../assets/Images/Kolkata.webp';
 import Jaipur from '../assets/Images/Jaipur.webp';
-import { Car, MapPin, Search } from 'lucide-react';
+import base from '../assets/Images/base.png';
+import lambo from '../assets/Images/lambo.webp';
+import Bmw from '../assets/Images/Bmw.jpg';
+import RR from '../assets/Images/RR.webp';
+import Ferrari from '../assets/Images/Ferrari.jpg';
+import aston from '../assets/Images/aston.jpg';
+import { Car, MapPin, Search, Type } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const Navigate = useNavigate();
+    const cars = [
+        { name: 'Base Model', imageUrl: base, type: 'Sedan' },
+            { name: 'Lamborghini', imageUrl: lambo, type: 'LUX' },
+            { name: 'BMW', imageUrl: Bmw , type: 'SUV'},
+            { name: 'Rolls Royce', imageUrl: RR , type: 'SUV'},
+            { name: 'Ferrari', imageUrl: Ferrari, type: 'LUX' },
+            {name: 'Aston Martin', imageUrl: aston, type: 'LUX'}
+      ];
     const cities = [
         { name: 'Bangalore', image: Bangalore },
         { name: 'Chennai', image: Chennai },
@@ -41,7 +55,7 @@ const Home = () => {
                             placeholder="Search for your perfect car..."
                             className="w-full px-4 py-2 text-gray-700 focus:outline-none"
                         />
-                        <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        <button className="bg-blue-600 px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
                             Search
                         </button>
                     </div>
@@ -58,12 +72,9 @@ const Home = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 rounded">
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
+                    {cars.map((car, index) => (
+                        <CarCard key={index} name={car.name} imageUrl={car.imageUrl} type={car.type}/>
+                    ))}
                 </div>
             </div>
 
@@ -133,9 +144,9 @@ const Home = () => {
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {[
-                                    { name: 'John Doe', feedback: 'Great service and friendly staff!', rating: 5 },
-                                    { name: 'Jane Smith', feedback: 'The car was in excellent condition.', rating: 4 },
-                                    { name: 'Sam Wilson', feedback: 'Affordable prices and easy booking process.', rating: 5 }
+                                    { name: 'Archisman Dey', feedback: 'Great service and friendly staff!', rating: 5 },
+                                    { name: 'Samprit Ganguly', feedback: 'The car was in excellent condition.', rating: 4 },
+                                    { name: 'Jhon anderson', feedback: 'Affordable prices and easy booking process.', rating: 5 }
                                 ].map((testimonial, index) => (
                                     <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                                         <p className="text-gray-600 mb-4">"{testimonial.feedback}"</p>

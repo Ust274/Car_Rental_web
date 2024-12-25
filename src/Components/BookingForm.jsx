@@ -36,7 +36,7 @@ const BookingForm = () => {
         }
         if(formData.carType === 'hatchback'){
             const restimate = Math.floor(Math.random() * 1000);
-            setEstimate(1500 + restimate)
+            setEstimate(500 + restimate)
         }
         if(formData.carType==='luxury'){
             const restimate = Math.floor(Math.random() * 1000);

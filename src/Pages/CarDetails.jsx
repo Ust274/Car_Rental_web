@@ -43,7 +43,7 @@ const CarDetails = () => {
                   <MapPin className="w-5 h-5" />
                   <span className="font-semibold">Type</span>
                 </div>
-                <p className="text-gray-600">Luxury Sedan</p>
+                <p className="text-gray-600">Sedan</p>
               </div>
               
               <div className="bg-white p-4 rounded-lg shadow-md">

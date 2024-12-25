@@ -1,9 +1,36 @@
 import React from 'react';
+import base from '../assets/Images/base.png';
+import lambo from '../assets/Images/lambo.webp';
+import Bmw from '../assets/Images/Bmw.jpg';
+import RR from '../assets/Images/RR.webp';
+import Ferrari from '../assets/Images/Ferrari.jpg';
+import aston from '../assets/Images/aston.jpg';
+import audiR8 from '../assets/Images/audiR8.webp';
+import porsche911 from '../assets/Images/porsche911.jpg';
+import mclaren720 from '../assets/Images/mclaren720.jpg';
+import tesla from '../assets/Images/tesla.jpg';
+import fordMustang from '../assets/Images/fordMustang.jpg';
+import chevroletcorvette from '../assets/Images/chevroletcorvette.jpg';
+
 import { Car, Search } from 'lucide-react';
 import CarCard from '../Components/CarCard';
 
 const CarListings = () => {
-    const k = 100;
+    const cars = [
+        { name: 'Base Model', imageUrl: base, type: 'Sedan' },
+        { name: 'Lamborghini', imageUrl: lambo, type: 'LUX' },
+        { name: 'BMW', imageUrl: Bmw, type: 'SUV' },
+        { name: 'Rolls Royce', imageUrl: RR, type: 'SUV' },
+        { name: 'Ferrari', imageUrl: Ferrari, type: 'LUX' },
+        { name: 'Aston Martin', imageUrl: aston, type: 'LUX' },
+        { name: 'Audi R8', imageUrl: audiR8, type: 'LUX' },
+        { name: 'Porsche 911', imageUrl: porsche911, type: 'LUX' },
+        { name: 'McLaren 720S', imageUrl: mclaren720, type: 'LUX' },
+        { name: 'Tesla Model S', imageUrl: tesla, type: 'SUV' },
+        { name: 'Ford Mustang', imageUrl: fordMustang, type: 'SUV' },
+        { name: 'Chevrolet Corvette', imageUrl: chevroletcorvette, type: 'LUX' },
+      ];
+      
 
     return (
         <>
@@ -34,13 +61,8 @@ const CarListings = () => {
             {/* Car Listings */}
             <div className="p-6 bg-gray-100 ">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 rounded">
-                    {Array.from({ length: k }, (_, index) => (
-                        <CarCard
-                            key={index}
-                            image={`path/to/car/image${index}.jpg`}
-                            name={`Car Model ${index}`}
-                            price={`$${(index + 1) * 100}`}
-                        />
+                    {cars.map((car, index) => (
+                        <CarCard key={index} name={car.name} imageUrl={car.imageUrl} type={car.type} />
                     ))}
                 </div>
             </div>
