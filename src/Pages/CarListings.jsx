@@ -5,7 +5,7 @@ import Bmw from '../assets/Images/Bmw.jpg';
 import RR from '../assets/Images/RR.webp';
 import Ferrari from '../assets/Images/Ferrari.jpg';
 import Aston from '../assets/Images/Aston.jpg';
-import audiR8 from '../assets/Images/audiR8.webp';
+import audiR8 from '../assets/Images/AudiR8.webp';
 import porsche911 from '../assets/Images/porsche911.jpg';
 import mclaren720 from '../assets/Images/mclaren720.jpg';
 import tesla from '../assets/Images/tesla.jpg';
@@ -17,7 +17,7 @@ import CarCard from '../Components/CarCard';
 
 const CarListings = () => {
     const cars = [
-        { name: 'Base Model', imageUrl: base, type: 'Sedan' },
+        { name: 'Mercedes', imageUrl: base, type: 'Sedan' },
         { name: 'Lamborghini', imageUrl: lambo, type: 'LUX' },
         { name: 'BMW', imageUrl: Bmw, type: 'SUV' },
         { name: 'Rolls Royce', imageUrl: RR, type: 'SUV' },

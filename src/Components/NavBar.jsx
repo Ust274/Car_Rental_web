@@ -4,12 +4,12 @@ import { LogIn } from 'lucide-react';
 
 const NavBar = () => {
     return (
-        <nav className="sticky top-0 z-50 bg-gradient-to-r from-yellow-100 to-blue-800 border-b">
+        <nav className="sticky top-0 z-50 bg-gray-800 border-b">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0">
-                        <Link to="/" className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-                            OpenRoads.com
+                        <Link to="/" className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-300 bg-clip-text text-transparent">
+                            OpenRoads.Com
                         </Link>
                     </div>
                     

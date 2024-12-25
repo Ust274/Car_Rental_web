@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
     const Navigate = useNavigate();
     const cars = [
-        { name: 'Base Model', imageUrl: base, type: 'Sedan' },
+        { name: 'Mercedes', imageUrl: base, type: 'Sedan' },
             { name: 'Lamborghini', imageUrl: lambo, type: 'LUX' },
             { name: 'BMW', imageUrl: Bmw , type: 'SUV'},
             { name: 'Rolls Royce', imageUrl: RR , type: 'SUV'},
