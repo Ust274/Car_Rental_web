@@ -4,7 +4,7 @@ import lambo from '../assets/Images/lambo.webp';
 import Bmw from '../assets/Images/Bmw.jpg';
 import RR from '../assets/Images/RR.webp';
 import Ferrari from '../assets/Images/Ferrari.jpg';
-import aston from '../assets/Images/aston.jpg';
+import Aston from '../assets/Images/Aston.jpg';
 import audiR8 from '../assets/Images/audiR8.webp';
 import porsche911 from '../assets/Images/porsche911.jpg';
 import mclaren720 from '../assets/Images/mclaren720.jpg';
@@ -22,7 +22,7 @@ const CarListings = () => {
         { name: 'BMW', imageUrl: Bmw, type: 'SUV' },
         { name: 'Rolls Royce', imageUrl: RR, type: 'SUV' },
         { name: 'Ferrari', imageUrl: Ferrari, type: 'LUX' },
-        { name: 'Aston Martin', imageUrl: aston, type: 'LUX' },
+        { name: 'Aston Martin', imageUrl: Aston, type: 'LUX' },
         { name: 'Audi R8', imageUrl: audiR8, type: 'LUX' },
         { name: 'Porsche 911', imageUrl: porsche911, type: 'LUX' },
         { name: 'McLaren 720S', imageUrl: mclaren720, type: 'LUX' },

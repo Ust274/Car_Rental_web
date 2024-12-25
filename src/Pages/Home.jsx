@@ -9,7 +9,7 @@ import lambo from '../assets/Images/lambo.webp';
 import Bmw from '../assets/Images/Bmw.jpg';
 import RR from '../assets/Images/RR.webp';
 import Ferrari from '../assets/Images/Ferrari.jpg';
-import aston from '../assets/Images/aston.jpg';
+import Aston from '../assets/Images/Aston.jpg';
 import { Car, MapPin, Search, Type } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ const Home = () => {
             { name: 'BMW', imageUrl: Bmw , type: 'SUV'},
             { name: 'Rolls Royce', imageUrl: RR , type: 'SUV'},
             { name: 'Ferrari', imageUrl: Ferrari, type: 'LUX' },
-            {name: 'Aston Martin', imageUrl: aston, type: 'LUX'}
+            {name: 'Aston Martin', imageUrl: Aston, type: 'LUX'}
       ];
     const cities = [
         { name: 'Bangalore', image: Bangalore },
