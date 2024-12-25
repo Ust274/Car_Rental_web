@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LogIn } from 'lucide-react';
+import { LogIn, Menu, X } from 'lucide-react';
 
 const NavBar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <nav className="sticky top-0 z-50 bg-gray-800 border-b">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0">
-                        <Link to="/" className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-300 bg-clip-text text-transparent">
+                        <Link to="/" className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-300 bg-clip-text text-transparent">
                             OpenRoads.Com
                         </Link>
                     </div>
                     
+                    {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-8 text-white font-bold">
                         <Link to="/" className="hover:text-blue-600 font-medium transition-colors">
                             Home
@@ -28,14 +35,75 @@ const NavBar = () => {
                         </Link>
                     </div>
 
-                    <Link 
-                        to="/Authentication"
-                        className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm"
+                    {/* Login Button */}
+                    <div className="hidden md:block">
+                        <Link 
+                            to="/Authentication"
+                            className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm"
+                        >
+                            <LogIn className="w-4 h-4" />
+                            <span>Login</span>
+                        </Link>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        onClick={toggleMenu}
+                        className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-white hover:text-blue-600 focus:outline-none"
                     >
-                        <LogIn className="w-4 h-4" />
-                        <span>Login</span>
-                    </Link>
+                        {isOpen ? (
+                            <X className="h-6 w-6" />
+                        ) : (
+                            <Menu className="h-6 w-6" />
+                        )}
+                    </button>
                 </div>
+
+                {/* Mobile Menu */}
+                {isOpen && (
+                    <div className="md:hidden">
+                        <div className="px-2 pt-2 pb-3 space-y-1">
+                            <Link
+                                to="/"
+                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                onClick={toggleMenu}
+                            >
+                                Home
+                            </Link>
+                            <Link
+                                to="Bookings/"
+                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                onClick={toggleMenu}
+                            >
+                                Bookings
+                            </Link>
+                            <Link
+                                to="CarListings/"
+                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                onClick={toggleMenu}
+                            >
+                                Listings
+                            </Link>
+                            <Link
+                                to="About/"
+                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                onClick={toggleMenu}
+                            >
+                                About
+                            </Link>
+                            <Link
+                                to="/Authentication"
+                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                onClick={toggleMenu}
+                            >
+                                <div className="flex items-center gap-2">
+                                    <LogIn className="w-4 h-4" />
+                                    <span>Login</span>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                )}
             </div>
         </nav>
     );
