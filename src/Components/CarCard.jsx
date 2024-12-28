@@ -16,14 +16,12 @@ const CarCard = (props) => {
     <div>
         <div className='flex justify-center p-2 bg-white'>
             <div className='max-w-sm rounded overflow-hidden shadow-lg'>
-            <img className='w-full' src={props.imageUrl} alt='Car' />
+            <img className='w-96 h-96' src={props.imageUrl} alt='Car' />
             <div className='px-6 py-4'>
                 <div className='font-bold text-xl mb-2'>{props.name}</div>
                 <p className='text-sm text-gray-700'>
                 Comfortable & Spacious Interiors 
-                Fuel-Efficient & Reliable Performance
                 Modern Safety Features
-                GPS & Bluetooth Connectivity 
                 </p>
             </div>
             <div className='px-6 py-4'>

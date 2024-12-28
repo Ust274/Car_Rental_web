@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { LogIn, Menu, X } from 'lucide-react';
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+
+    // Check if the current path matches the provided path
+    const isActive = (path) => location.pathname === path;
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -21,16 +25,28 @@ const NavBar = () => {
                     
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-8 text-white font-bold">
-                        <Link to="/" className="hover:text-blue-600 font-medium transition-colors">
+                        <Link 
+                            to="/" 
+                            className={`hover:text-blue-600 font-medium transition-colors ${isActive('/') ? 'text-blue-400' : ''}`}
+                        >
                             Home
                         </Link>
-                        <Link to="Bookings/" className="hover:text-blue-600 font-medium transition-colors">
+                        <Link 
+                            to="Bookings/" 
+                            className={`hover:text-blue-600 font-medium transition-colors ${isActive('/Bookings/') ? 'text-blue-400' : ''}`}
+                        >
                             Bookings
                         </Link>
-                        <Link to="CarListings/" className="hover:text-blue-600 font-medium transition-colors">
+                        <Link 
+                            to="CarListings/" 
+                            className={`hover:text-blue-600 font-medium transition-colors ${isActive('/CarListings/') ? 'text-blue-400 ' : ''}`}
+                        >
                             Listings
                         </Link>
-                        <Link to="About/" className="hover:text-blue-600 font-medium transition-colors">
+                        <Link 
+                            to="About/" 
+                            className={`hover:text-blue-600 font-medium transition-colors ${isActive('/About/') ? 'text-blue-400 ' : ''}`}
+                        >
                             About
                         </Link>
                     </div>
@@ -39,7 +55,9 @@ const NavBar = () => {
                     <div className="hidden md:block">
                         <Link 
                             to="/Authentication"
-                            className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm"
+                            className={`inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm ${
+                                isActive('/Authentication') ? 'bg-blue-500' : ''
+                            }`}
                         >
                             <LogIn className="w-4 h-4" />
                             <span>Login</span>
@@ -65,35 +83,45 @@ const NavBar = () => {
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             <Link
                                 to="/"
-                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                className={`block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors ${
+                                    isActive('/') ? 'text-blue-400  ' : ''
+                                }`}
                                 onClick={toggleMenu}
                             >
                                 Home
                             </Link>
                             <Link
                                 to="Bookings/"
-                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                className={`block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors ${
+                                    isActive('/Bookings/') ? 'text-blue-400  ' : ''
+                                }`}
                                 onClick={toggleMenu}
                             >
                                 Bookings
                             </Link>
                             <Link
                                 to="CarListings/"
-                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                className={`block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors ${
+                                    isActive('/CarListings/') ? 'text-blue-400  ' : ''
+                                }`}
                                 onClick={toggleMenu}
                             >
                                 Listings
                             </Link>
                             <Link
                                 to="About/"
-                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                className={`block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors ${
+                                    isActive('/About/') ? 'text-blue-400  ' : ''
+                                }`}
                                 onClick={toggleMenu}
                             >
                                 About
                             </Link>
                             <Link
                                 to="/Authentication"
-                                className="block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors"
+                                className={`block px-3 py-2 rounded-md text-white hover:text-blue-600 font-medium transition-colors ${
+                                    isActive('/Authentication') ? 'text-blue-400  ' : ''
+                                }`}
                                 onClick={toggleMenu}
                             >
                                 <div className="flex items-center gap-2">
