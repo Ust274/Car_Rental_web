@@ -10,6 +10,7 @@ import Bmw from '../assets/Images/Bmw.jpg';
 import RR from '../assets/Images/RR.webp';
 import Ferrari from '../assets/Images/Ferrari.jpg';
 import Aston from '../assets/Images/Aston.jpg';
+import backgroundImage from '../assets/Images/background.jpg';
 import { Car, MapPin, Search, Type } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -40,7 +41,7 @@ const Home = () => {
                 <div 
                         className="absolute inset-0 z-0"
                         style={{
-                        backgroundImage: "url('src/assets/Images/background.jpg')",
+                        backgroundImage: `url(${backgroundImage})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         filter: 'blur(2px) brightness(0.9)'
