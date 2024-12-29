@@ -1,41 +1,47 @@
-import { Navigate, useNavigate } from 'react-router-dom';
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 function Authentication() {
-    const [islogin, setIsLogin] = useState(true);
-    const Navigate = useNavigate();
+    const navigate = useNavigate(); // Fixed casing of navigate
+    const [isLogin, setIsLogin] = useState(true); // Fixed casing of isLogin
     const [showMessage, setShowMessage] = useState(false);
-    const [formData, SetFormData] = useState({
-        email: '',
+    const [formData, setFormData] = useState({ // Fixed casing of setFormData
+        username: '', // Changed to lowercase to match backend
         password: ''
-
     });
-    const[error, setError] = useState('');
+    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+
     const handleInputChange = (e) => {
-        const{id, value} = e.target;
-        SetFormData(prev => ({ 
-                ...prev,
-                [id]: value
-            }));
-            setError('');
-    }
-
-    const handleClick= () => {
-        Navigate('/');
+        const { id, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            // Convert Username to username for consistency
+            [id.toLowerCase()]: value
+        }));
+        setError('');
     };
-  
 
+    const handleClick = () => {
+        navigate('/'); // Using lowercase navigate
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         setLoading(true);
         
-        const endpoint = islogin ? '/api/login' : '/api/signup';
+        // Fixed endpoints to match backend
+        const endpoint = isLogin ? '/login' : '/signup';
         console.log('Attempting fetch to:', `http://localhost:3000${endpoint}`);
-        console.log('With data:', formData);
+        
+        // Create proper payload with lowercase username
+        const payload = {
+            username: formData.username,
+            password: formData.password
+        };
+        
+        console.log('With data:', payload);
     
         try {
             const response = await fetch(`http://localhost:3000${endpoint}`, {
@@ -43,7 +49,8 @@ function Authentication() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                credentials: 'include', // Added for CORS
+                body: JSON.stringify(payload),
             });
             
             const data = await response.json();
@@ -53,14 +60,19 @@ function Authentication() {
                 throw new Error(data.error || 'Something went wrong');
             }
     
-            localStorage.setItem('token', data.token);
-            console.log("Success:", data);
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('userId', data.userId);
+                console.log("Success:", data);
 
-            setShowMessage(true);
-
-            setTimeout(() => {
-                setShowMessage(false);
-            }, 3000);
+                setShowMessage(true);
+                
+                // Navigate after successful login/signup
+                setTimeout(() => {
+                    setShowMessage(false);
+                    navigate('/'); // Navigate to home page
+                }, 2000);
+            }
 
         } catch (error) {
             console.error('Detailed error:', {
@@ -74,10 +86,10 @@ function Authentication() {
     };
 
     return (
-         <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold mb-6 text-center">
-                    {islogin ? 'Login' : 'Sign Up'}
+                    {isLogin ? 'Login' : 'Sign Up'}
                 </h2>
                 
                 {error && (
@@ -88,17 +100,18 @@ function Authentication() {
 
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                            Email
+                        <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">
+                            Username
                         </label>
                         <input
-                            type="email"
-                            id="email"
-                            value={formData.email}
+                            type="text"
+                            id="username"
+                            value={formData.username}
                             onChange={handleInputChange}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Enter your email"
+                            placeholder="Enter your username"
                             required
+                            minLength={3}
                         />
                     </div>
                     <div className="mb-6">
@@ -113,6 +126,7 @@ function Authentication() {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter your password"
                             required
+                            minLength={5}
                         />
                     </div>
                     <div className="flex flex-col space-y-4">
@@ -121,35 +135,27 @@ function Authentication() {
                             disabled={loading}
                             className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                            {loading ? 'Processing...' : (islogin ? 'Sign In' : 'Sign Up')}
+                            {loading ? 'Processing...' : (isLogin ? 'Sign In' : 'Sign Up')}
                         </button>
                         
                         <div className="text-center">
                             <button
                                 type="button"
-                                onClick={() => setIsLogin(!islogin)}
+                                onClick={() => setIsLogin(!isLogin)}
                                 className="text-blue-500 hover:text-blue-800 text-sm font-bold"
                             >
-                                {islogin ? 'Need an account? Sign up' : 'Already have an account? Sign in'}
+                                {isLogin ? 'Need an account? Sign up' : 'Already have an account? Sign in'}
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
-            {showMessage && (
-                <div className="fixed inset-x-0 bottom-0 z-50 p-4 bg-green-500 text-white text-center">
-                    Successfully logged in!
-                </div>
-            )}
-
-            {showMessage && (
-                <div  onClick={handleClick} className="fixed p-2 top-40 bg-blue-500 text-white text-center rounded">
-                    Get back to the home page
-                </div>
-            )}
-
-
             
+            {showMessage && (
+                <div className="fixed bottom-0 inset-x-0 p-4 bg-green-500 text-white text-center">
+                    Successfully {isLogin ? 'logged in' : 'signed up'}!
+                </div>
+            )}
         </div>
     );
 }

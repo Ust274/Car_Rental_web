@@ -35,10 +35,24 @@ const Home = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="h-screen bg-gray-50">
             {/* Hero Section */}
-            <div className="relative bg-gradient-to-r from-blue-800 to-blue-600 text-white py-16">
-                <div className="container mx-auto px-4 text-center">
+                <div 
+                        className="absolute inset-0 z-0"
+                        style={{
+                        backgroundImage: "url('src/assets/Images/background.jpg')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        filter: 'blur(2px) brightness(0.9)'
+                        }}
+                    />
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 z-10 bg-gradient-to-r from-blue-800/80 to-blue-400/80" />
+                    
+                    {/* Content */}
+                    <div className="relative z-20 h-full bg-transparent text-white py-16">
+                        <div className="container mx-auto px-4 text-center">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                         Drive Your Dreams Today!
                     </h1>
@@ -49,7 +63,7 @@ const Home = () => {
                     
                     {/* Search Bar */}
                     <div className="max-w-2xl mx-auto bg-white rounded-lg p-2 flex items-center shadow-lg">
-                        <Search className="w-6 h-6 text-gray-400 ml-2" />
+                        <Search className="w-6 h-6  text-gray-400 ml-2" />
                         <input 
                             type="text" 
                             placeholder="Search for your perfect car..."
