@@ -60,6 +60,10 @@ const userSchema = new mongoose.Schema({
 // User Model
 const User = mongoose.model('User', userSchema);
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Car Rental Backend!');
+});
+
 // Signup Route with better error handling
 app.post('/signup', async (req, res) => {
     const { username, password } = req.body;
