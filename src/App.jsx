@@ -8,6 +8,8 @@ import CarDetails from './Pages/CarDetails';
 import Footer from './Components/Footer';
 import NavBar from './Components/NavBar';
 import About from './Pages/About';
+import Payment from './Components/Payment';
+import NotFoundPage from './Pages/NotFoundPage';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 export default function App() {
 
@@ -24,9 +26,12 @@ export default function App() {
       <Route path='/Authentication' element={<Authentication/>}></Route>
       <Route path='/CarDetails' element={<CarDetails/>}></Route>
       <Route path='/About' element={<About/>}></Route>
+      <Route path='/Payment' element={<Payment/>}></Route>
+      <Route path='/NotFoundPage' element={<NotFoundPage/>}></Route>
     </Routes>
     <Footer/>
     </BrowserRouter>
+  
     
     </>
   );

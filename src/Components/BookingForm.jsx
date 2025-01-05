@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Car, CreditCard, MapPin, Package, User, Phone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const BookingForm = () => {
     const [estimate,setEstimate] = useState(0);
@@ -14,6 +15,12 @@ const BookingForm = () => {
         endDate: '',
         paymentMode: ''
     });
+
+    const Navigate = useNavigate();
+
+    const HandleNavigation = () => {
+        Navigate('/Payment');
+    }
 
     // const [message, setMessage] = useState('');
     const handleSubmit = (e) => {
@@ -213,6 +220,9 @@ const BookingForm = () => {
                     className="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200"
                 >
                     Estimate
+                </button> 
+                <button onClick={HandleNavigation} className="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                    Proceed to Payment
                 </button>
             </div>
             {/* {message && ( <div className="mt-4 bg-green-100 border border-green-400 text-green-700 p-4 rounded-lg">

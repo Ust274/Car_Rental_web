@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 function Authentication() {
-    const navigate = useNavigate(); // Fixed casing of navigate
-    const [isLogin, setIsLogin] = useState(true); // Fixed casing of isLogin
+    const navigate = useNavigate();
+    const [isLogin, setIsLogin] = useState(true);
     const [showMessage, setShowMessage] = useState(false);
-    const [formData, setFormData] = useState({ // Fixed casing of setFormData
-        username: '', // Changed to lowercase to match backend
+    const [formData, setFormData] = useState({
+        username: '',
         password: ''
     });
     const [error, setError] = useState('');
@@ -16,14 +16,13 @@ function Authentication() {
         const { id, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            // Convert Username to username for consistency
             [id.toLowerCase()]: value
         }));
         setError('');
     };
 
     const handleClick = () => {
-        navigate('/'); // Using lowercase navigate
+        navigate('/');
     };
 
     const handleSubmit = async (e) => {
@@ -31,11 +30,9 @@ function Authentication() {
         setError('');
         setLoading(true);
         
-        // Fixed endpoints to match backend
         const endpoint = isLogin ? '/login' : '/signup';
         console.log('Attempting fetch to:', `http://localhost:3000${endpoint}`);
         
-        // Create proper payload with lowercase username
         const payload = {
             username: formData.username,
             password: formData.password
@@ -49,7 +46,7 @@ function Authentication() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: 'include', // Added for CORS
+                credentials: 'include', 
                 body: JSON.stringify(payload),
             });
             
@@ -67,7 +64,7 @@ function Authentication() {
 
                 setShowMessage(true);
                 
-                // Navigate after successful login/signup
+                // Show success pop-up message for login/signup
                 setTimeout(() => {
                     setShowMessage(false);
                     navigate('/'); // Navigate to home page
@@ -151,6 +148,7 @@ function Authentication() {
                 </form>
             </div>
             
+            {/* Success message pop-up */}
             {showMessage && (
                 <div className="fixed bottom-0 inset-x-0 p-4 bg-green-500 text-white text-center">
                     Successfully {isLogin ? 'logged in' : 'signed up'}!

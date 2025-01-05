@@ -54,19 +54,18 @@ app.get('/', (req, res) => {
     res.send('Welcome to the Car Rental Backend!');
 });
 
-// Signup Route with better error handling
-    // app.get('/users', async (req, res) => {
-    //     try {
-    //         const users = await User.find();
-    //         res.status(200).json(users);
-    //     } catch (error) {
-    //         console.error('Error fetching users:', error);
-    //         res.status(500).json({ 
-    //             error: 'Internal server error',
-    //             details: error.message 
-    //         });
-    //     }
-    // });
+    app.get('/users', async (req, res) => {
+        try {
+            const users = await User.find();
+            res.status(200).json(users);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+            res.status(500).json({ 
+                error: 'Internal server error',
+                details: error.message 
+            });
+        }
+    });
 
 
 // Health check route

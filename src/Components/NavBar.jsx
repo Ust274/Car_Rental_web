@@ -14,9 +14,13 @@ const NavBar = () => {
     };
 
     return (
-        <nav className="sticky top-0 z-50 bg-gray-800 border-b">
+        <nav className="sticky top-0 z-50 bg-gray-800 border-b p-3">
+            {/* <div className='bg-gradient-to-r from-blue-700 to-blue-800 p-2'>
+                        <p className='text-xs text-white font-bold'> Call  199-110-110-433  for enquiry </p>
+                    </div> */}
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
+                    
                     <div className="flex-shrink-0">
                         <Link to="/" className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-300 bg-clip-text text-transparent">
                             OpenRoads.Com

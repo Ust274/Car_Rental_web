@@ -38,7 +38,7 @@ const Home = () => {
     return (
     
     <>
-        <div className="h-screen bg-gray-50">
+        <div className="h-screen bg-gray-50 mt-0">
                     {/* Hero Section */}
                             <div className="absolute inset-0 z-0"
                                 style={{
@@ -56,7 +56,7 @@ const Home = () => {
                             {/* Content */}
                             <div className="relative z-20 h-full bg-transparent text-white py-16">
                                 <div className="container mx-auto px-4 text-center">
-                            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
                                 Drive Your Dreams Today!
                             </h1>
                             <p className="text-xl md:text-2xl max-w-3xl mx-auto text-blue-100 mb-8">
@@ -65,17 +65,11 @@ const Home = () => {
                             </p>
                             
                             {/* Search Bar */}
-                            <div className="max-w-2xl mx-auto bg-white rounded-lg p-2 flex items-center shadow-lg">
-                                <Search className="w-6 h-6  text-gray-400 ml-2" />
-                                <input 
-                                    type="text" 
-                                    placeholder="Search for your perfect car..."
-                                    className="w-full px-4 py-2 text-gray-700 focus:outline-none"
-                                />
-                                <button className="bg-blue-600 px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
-                                    Search
+                            <div className="max-w-2xl mx-auto items-center mt-16">
+                                <button onClick={handleclick} className="bg-blue-800 px-14 py-6 rounded-md hover:bg-blue-900 transition-colors mt-32 text-2xltransition-all duration-300 ease-in-out shadow-[0_0_20px_rgba(255,255,255,0.3)] text-xl">
+                                   <b>BOOK NOW</b>
                                 </button>
-                    </div>
+                            </div>
                 </div>
             </div>
         </div>
