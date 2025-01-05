@@ -2,7 +2,7 @@
 
 OpenRoads is a modern car rental application designed to provide a seamless experience for users to browse, book, and manage car rentals. Built with React, Tailwind CSS, and Lucide React for the front-end, and powered by Node.js, Express, and MongoDB Atlas for the back-end, OpenRoads delivers a responsive, efficient, and scalable solution for car rental services.
 
-##Home
+Home
 ![image](https://github.com/user-attachments/assets/dbdc6694-d2cc-46a1-9bb7-6ff717092fb5)
 
 
@@ -68,8 +68,8 @@ OpenRoads is a modern car rental application designed to provide a seamless expe
    ```
 
 6. **Access the application:**
-   - Front-end: [http://localhost:3000](http://localhost:3000)
-   - Back-end: [http://localhost:5000](http://localhost:5000)
+   - Front-end: [https://car-rental-web-jx9p.vercel.app/](https://car-rental-web-jx9p.vercel.app/)
+   - Back-end: [https://car-rental-web-v7nq.onrender.com](https://car-rental-web-v7nq.onrender.com)
 
 ## Folder Structure
 
@@ -97,13 +97,3 @@ OpenRoads/
 ## Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
-## Contact
-
-For any inquiries or support, please contact:
-- **Email:** your-email@example.com
-- **GitHub:** [your-username](https://github.com/your-username)
